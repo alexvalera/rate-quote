@@ -4,7 +4,7 @@ const StyledLabel = styled.label`
 display: inline-block;
   font-family: 'Helvetica'; 
   text-align: right;
-  width: 90px;
+  width: 100px;
 `; 
 
 const Label = (props) => (

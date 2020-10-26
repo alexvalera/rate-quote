@@ -1,4 +1,5 @@
-import styled from 'styled-components'; 
+import styled from 'styled-components';
+import Dropdown from '../Dropdown/Dropdown';
 import TextInput from '../TextInput/TextInput';
 
 const StyledForm = styled.form`
@@ -26,7 +27,7 @@ const Form = () => (
         <TextInput label="Loan Size"/>
       </Column>
       <Column>
-        <TextInput label="Loan Size"/>
+          <Dropdown label="Property Type"/>
       </Column>
     </Row>
     <Row>
