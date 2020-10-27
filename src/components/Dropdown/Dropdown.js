@@ -4,10 +4,19 @@ import styled from 'styled-components'
 
 
 export const Select = styled.select`
-margin-left: 1rem;
-border: 2px solid #cecece;
-padding: 0.5rem;
-width: 270px;
+  border: 2px solid #cecece;
+  padding: 0.5rem;
+  width: 100%;
+  margin-top: 5px;
+
+  @media (min-width: 768px) {
+    width: 210px;
+    margin-left: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 270px;
+  }
 `;
 
 const Container = styled.div``;

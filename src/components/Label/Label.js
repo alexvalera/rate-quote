@@ -1,10 +1,14 @@
 import styled from 'styled-components'; 
 
 const StyledLabel = styled.label`
-display: inline-block;
+  display: block;
   font-family: 'Helvetica'; 
-  text-align: right;
-  width: 100px;
+
+  @media (min-width: 768px) {
+    width: 100px;
+    display: inline-block;
+    text-align: right;
+  }
 `; 
 
 const Label = (props) => (

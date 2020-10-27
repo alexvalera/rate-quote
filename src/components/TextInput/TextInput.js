@@ -3,19 +3,35 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  margin-left: 1rem;
+  width: calc(100% - 20px);
   border: 2px solid #cecece;
   padding: 0.5rem;
-  width: 250px;
+  margin-top: 5px;
+
+  @media (min-width: 768px) {
+    margin-left: 1rem;
+    flex-direction: column;
+    width: 190px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 250px;
+  }
 `;
 
 const Container = styled.div``;
 
 const TextInput = (props) => {
+  function handleChange(e) {
+    console.log(e.target.value);
+  }
   return (
     <Container>
       <Label text={props.label}/>
-      <Input type="text"/>
+      <Input 
+        onChange={handleChange}
+        type="text
+      "/>
     </Container>
   )
 }; 
