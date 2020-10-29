@@ -4,7 +4,7 @@ import { setOccupancy } from "../../../actions/index";
 import { connect } from "react-redux";
 
 
-const ConnectedOccupancy = (props) => {
+const Occupancy = (props) => {
   function handleChange(e) {
     console.log(e.target.value);
     props.setOccupancy(e.target.value);
@@ -19,15 +19,13 @@ const ConnectedOccupancy = (props) => {
   )
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     setOccupancy: occupancy => dispatch(setOccupancy(occupancy))
   };
 }
 
-const Occupancy= connect(
+export default connect(
   null,
   mapDispatchToProps
-)(ConnectedOccupancy);
-
-export default Occupancy;
+)(Occupancy);

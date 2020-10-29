@@ -3,11 +3,10 @@ import { PROPERTY_TYPE_OPTIONS } from '../../../shared/constants';
 import { setPropertyType } from "../../../actions/index";
 import { connect } from "react-redux";
 
-
-const ConnectedPropertyType = (props) => {
+const PropertyType = (props) => {
   function handleChange(e) {
     console.log(e.target.value);
-    props.setProperty(e.target.value);
+    props.setPropertyType(e.target.value);
   }
   return (
     <Dropdown 
@@ -19,15 +18,13 @@ const ConnectedPropertyType = (props) => {
   )
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     setPropertyType: type => dispatch(setPropertyType(type))
   };
 }
 
-const PropertyType = connect(
+export default connect(
   null,
   mapDispatchToProps
-)(ConnectedPropertyType);
-
-export default PropertyType;
+)(PropertyType);
