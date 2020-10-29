@@ -3,28 +3,25 @@ import { setCreditScore } from "../../../actions/index";
 import { connect } from "react-redux";
 
 
-const ConnectedCreditScore = () => {
+const CreditScore = ({ setCreditScore }) => {
   function handleChange(e) {
-    this.props.setCreditScore(e.target.value);
+    setCreditScore(e.target.value);
   }
   return (
     <TextInput
       onChangeHandler={handleChange}
       name="creditScore"
       label="Credit Score"
+      maxLength={3}
     />
   )
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setCreditScore: creditScore => dispatch(setCreditScore(creditScore))
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  setCreditScore: creditScore => dispatch(setCreditScore(creditScore))
+});
 
-const CreditScore= connect(
+export default connect(
   null,
   mapDispatchToProps
-)(ConnectedCreditScore);
-
-export default CreditScore;
+)(CreditScore);

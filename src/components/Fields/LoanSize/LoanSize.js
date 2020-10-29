@@ -3,28 +3,30 @@ import { setLoanSize } from "../../../actions/index";
 import { connect } from "react-redux";
 
 
-const ConnectedLoanSize = () => {
+const LoanSize = ({ setLoanSize }) => {
   function handleChange(e) {
-    this.props.setLoanSize(e.target.value);
+    const formattedNum = formatNumber(e.target.value); 
+    console.log(formattedNum);
+    setLoanSize(e.target.value);
+  }
+  function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   return (
     <TextInput
       onChangeHandler={handleChange}
       name="loan"
       label="Loan Size"
+      maxLength={6}
     />
   )
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setLoanSize: loanSize => dispatch(setLoanSize(loanSize))
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  setLoanSize: loan => dispatch(setLoanSize(loan)),
+});
 
-const LoanSize= connect(
+export default connect(
   null,
   mapDispatchToProps
-)(ConnectedLoanSize);
-
-export default LoanSize;
+)(LoanSize);
