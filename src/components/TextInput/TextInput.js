@@ -23,11 +23,13 @@ const Container = styled.div``;
 
 const TextInput = ({label, name, maxLength, onChangeHandler, value}) => (
   <Container>
-    <Label text={label} for={name}/>
+    <Label text={label} association={name}/>
     <Input 
       onChange={onChangeHandler}
       type="text"
+      id={name}
       name={name}
+      aria-label={name}
       maxLength={maxLength || ''}
       value={value}
     />
