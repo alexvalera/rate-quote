@@ -1,10 +1,19 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { connect } from 'react-redux';
 import { formatNumber } from '../../utilities/utilities';
+
+const FadeUpAnimation = keyframes`
+  from {transform: translateY(10px); opacity: 0; }
+  to {transform: translateY(0px); opacity: 1; }
+`; 
+
 const Table = styled.table`
+  animation: ${FadeUpAnimation} 0.5s; 
+  animation-fill-mode: forwards;
+  transform: translateY(0px); 
   width: 100%;
   max-width: 880px;
-  margin: 0 auto;
+  margin: 1rem auto;
   border-collapse: collapse;
   border: 1px solid #ddd;
   font-size: 14px;
