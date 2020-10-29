@@ -1,23 +1,37 @@
 import TextInput from "../../TextInput/TextInput"
 import { setLoanSize } from "../../../actions/index";
 import { connect } from "react-redux";
-
+import { useState } from 'react';
+import { formatNumber, sanitizeNumber } from '../../../utilities/utilities'
 
 const LoanSize = ({ setLoanSize }) => {
+  const [value, setValue] = useState('');
+
   function handleChange(e) {
-    const formattedNum = formatNumber(e.target.value); 
-    console.log(formattedNum);
-    setLoanSize(e.target.value);
+    if (!e.target.value || e.target.value === '$') {
+      setValue('');
+      setLoanSize('');
+      return;
+    }
+
+    // sanitize and format 
+    const sanitizedInput = sanitizeNumber(e.target.value);
+    const replaceRegex = new RegExp(`[^0-9]+`);
+    const userInput = sanitizedInput.replace(replaceRegex, '');
+    const formattedNum = formatNumber(userInput); 
+
+    setValue(formattedNum);
+    setLoanSize(sanitizeNumber(e.target.value));
   }
-  function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+
   return (
     <TextInput
       onChangeHandler={handleChange}
       name="loan"
       label="Loan Size"
-      maxLength={6}
+      maxLength={8}
+      isControlled={true}
+      value={value}
     />
   )
 }
