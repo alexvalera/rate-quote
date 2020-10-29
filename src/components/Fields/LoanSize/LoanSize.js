@@ -30,7 +30,6 @@ const LoanSize = ({ setLoanSize }) => {
       name="loan"
       label="Loan Size"
       maxLength={8}
-      isControlled={true}
       value={value}
     />
   )

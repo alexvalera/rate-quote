@@ -10,7 +10,7 @@ const CreditScore = ({ setCreditScore }) => {
     // format
     const replaceRegex = new RegExp(`[^0-9]+`);
     const userInput = e.target.value.replace(replaceRegex, '');
-    
+
     setCreditScore(userInput);
     setValue(userInput);
   }
@@ -20,7 +20,6 @@ const CreditScore = ({ setCreditScore }) => {
       name="creditScore"
       label="Credit Score"
       maxLength={3}
-      isControlled={true}
       value={value}
     />
   )
