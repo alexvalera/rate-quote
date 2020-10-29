@@ -21,11 +21,11 @@ export const Select = styled.select`
 
 const Container = styled.div``;
 
-const Dropdown = ({label, onChangeHandler, options}) => {
+const Dropdown = ({name, label, onChangeHandler, options}) => {
   return (
     <Container>
-      <Label text={label}/>
-      <Select onChange={onChangeHandler}>
+      <Label text={label} association={name}/>
+      <Select name={name} id={name} onChange={onChangeHandler}>
         {
           Object.entries(options).map(([k, v]) => {
             return <option key={k} value={k}>{v}</option>
@@ -37,6 +37,7 @@ const Dropdown = ({label, onChangeHandler, options}) => {
 }; 
 
 Dropdown.propTypes = {
+  name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired, 
   options: PropTypes.object.isRequired, 
   onChangeHandler: PropTypes.func.isRequired
