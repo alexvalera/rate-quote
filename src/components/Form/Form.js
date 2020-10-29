@@ -54,10 +54,12 @@ const SubmitButton = styled.button`
 
 const Form = ({loanSize, creditScore, propertyType, occupancy}) =>  {
   const dispatch = useDispatch();
+
   function handleSubmit(e) {
     e.preventDefault()
     dispatch(getRateQuotes(loanSize, creditScore, propertyType, occupancy));
   }
+  
   return (
     <StyledForm onSubmit={handleSubmit}>
       <Row>
