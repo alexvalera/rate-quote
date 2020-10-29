@@ -26,10 +26,11 @@ const Dropdown = (props) => {
     <Container>
       <Label text={props.label}/>
       <Select>
-        <option value ="Condo">Condo</option>
-        <option value ="Townhouse">Townhouse</option>
-        <option value ="SingleFamily">Single Family Home</option>
-        <option value ="MultiFamily">Multi Family Home</option>
+        {
+          Object.entries(props.options).map(([k, v]) => {
+            return <option value={k}>{v}</option>
+          })
+        }
       </Select>
     </Container>
   )
@@ -37,7 +38,7 @@ const Dropdown = (props) => {
 
 Dropdown.propTypes = {
   label: PropTypes.string.isRequired, 
-  options: PropTypes.object
+  options: PropTypes.object.isRequired
 }
 
 export default Dropdown;

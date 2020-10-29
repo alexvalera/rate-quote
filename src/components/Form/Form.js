@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Dropdown from '../Dropdown/Dropdown';
 import TextInput from '../TextInput/TextInput';
+import { PROPERTY_TYPE_OPTIONS, OCCUPANCY_OPTIONS } from '../../shared/constants';
 
 const StyledForm = styled.form`
   display: flex;
@@ -47,18 +48,32 @@ const Form = () => (
   <StyledForm>
     <Row>
       <Column>
-        <TextInput label="Loan Size"/>
+        <TextInput 
+          name="loan"
+          label="Loan Size"
+        />
       </Column>
       <Column>
-          <Dropdown label="Property Type"/>
+          <Dropdown 
+            name="property"
+            label="Property Type"
+            options={PROPERTY_TYPE_OPTIONS}
+          />
       </Column>
     </Row>
     <Row>
       <Column>
-        <TextInput label="Credit Score"/>
+        <TextInput 
+          name="creditScore"
+          label="Credit Score"
+        />
       </Column>
       <Column>
-        <TextInput label="Loan Size"/>
+        <Dropdown 
+          name="occupancy"
+          label="Occupancy"
+          options={OCCUPANCY_OPTIONS}
+        />
       </Column>
     </Row>
     <SubmitRow>

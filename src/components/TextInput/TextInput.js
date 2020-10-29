@@ -37,6 +37,7 @@ const TextInput = (props) => {
 }; 
 
 TextInput.propTypes = {
+  name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 }
 
