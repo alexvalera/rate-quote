@@ -22,23 +22,22 @@ export const Input = styled.input`
 const Container = styled.div``;
 
 const TextInput = (props) => {
-  function handleChange(e) {
-    console.log(e.target.value);
-  }
   return (
     <Container>
-      <Label text={props.label}/>
+      <Label text={props.label} for={props.name}/>
       <Input 
-        onChange={handleChange}
-        type="text
-      "/>
+        onChange={props.onChangeHandler}
+        type="text"
+        name={props.name}
+      />
     </Container>
   )
 }; 
 
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  onChangeHandler: PropTypes.func.isRequired
 }
 
 export default TextInput; 

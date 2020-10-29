@@ -28,7 +28,7 @@ const Dropdown = (props) => {
       <Select>
         {
           Object.entries(props.options).map(([k, v]) => {
-            return <option value={k}>{v}</option>
+            return <option key={k} value={k}>{v}</option>
           })
         }
       </Select>
