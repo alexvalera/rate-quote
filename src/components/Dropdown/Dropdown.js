@@ -25,7 +25,7 @@ const Dropdown = (props) => {
   return (
     <Container>
       <Label text={props.label}/>
-      <Select>
+      <Select onChange={props.onChangeHandler}>
         {
           Object.entries(props.options).map(([k, v]) => {
             return <option key={k} value={k}>{v}</option>
@@ -38,7 +38,8 @@ const Dropdown = (props) => {
 
 Dropdown.propTypes = {
   label: PropTypes.string.isRequired, 
-  options: PropTypes.object.isRequired
+  options: PropTypes.object.isRequired, 
+  onChangeHandler: PropTypes.func.isRequired
 }
 
 export default Dropdown;
