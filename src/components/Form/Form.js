@@ -38,6 +38,7 @@ const SubmitRow = styled(Row)`
 `;
 
 const SubmitButton = styled.button`
+    transition: all 0.3s ease;
     padding: 20px;
     background-color: #032d29;
     color: white;
@@ -45,6 +46,10 @@ const SubmitButton = styled.button`
     font-size: 15px;
     border: none;
     border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: #1b1f1f;
+    }
 `;
 
 const Form = ({loanSize, creditScore, propertyType, occupancy}) =>  {
