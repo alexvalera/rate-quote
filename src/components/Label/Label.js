@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'; 
 import styled from 'styled-components'; 
 
 const StyledLabel = styled.label`
@@ -11,8 +12,13 @@ const StyledLabel = styled.label`
   }
 `; 
 
-const Label = (props) => (
-  <StyledLabel>{props.text}</StyledLabel>
-);
+const Label = ({association, text}) => (
+  <StyledLabel aria-labelledby={association}>{text}</StyledLabel>
+)
+
+Label.propTypes = {
+  association: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+}
 
 export default Label;
