@@ -8,6 +8,6 @@ test('call onChange Handler', async () => {
     label="mock"
     onChangeHandler={onChangeHandler}
   />)
-  const input = await screen.getByLabelText('mock'); 
+  const input = screen.getByLabelText('mock'); 
   expect(input).toBeTruthy();
 })
