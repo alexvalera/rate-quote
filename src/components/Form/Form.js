@@ -3,6 +3,8 @@ import LoanSize from '../Fields/LoanSize/LoanSize';
 import CreditScore from '../Fields/CreditScore/CreditScore';
 import Occupancy from '../Fields/Occupancy/Occupancy';
 import PropertyType from '../Fields/PropertyType/PropertyType';
+import { getRateQuotes } from '../../actions';
+import { connect, useDispatch } from "react-redux";
 
 const StyledForm = styled.form`
   display: flex;
@@ -45,28 +47,47 @@ const SubmitButton = styled.button`
     border-radius: 4px;
 `;
 
-const Form = () => (
-  <StyledForm>
-    <Row>
-      <Column>
-        <LoanSize/>
-      </Column>
-      <Column>
-        <PropertyType/>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <CreditScore/>
-      </Column>
-      <Column>
-        <Occupancy/>
-      </Column>
-    </Row>
-    <SubmitRow>
-      <SubmitButton>Quote Rates</SubmitButton>
-    </SubmitRow>
-  </StyledForm>
-); 
+const Form = ({loanSize, creditScore, propertyType, occupancy}) =>  {
+  const dispatch = useDispatch();
+  function handleSubmit(e) {
+    e.preventDefault()
+    dispatch(getRateQuotes(loanSize, creditScore, propertyType, occupancy));
+  }
+  return (
+    <StyledForm onSubmit={handleSubmit}>
+      <Row>
+        <Column>
+          <LoanSize/>
+        </Column>
+        <Column>
+          <PropertyType/>
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <CreditScore/>
+        </Column>
+        <Column>
+          <Occupancy/>
+        </Column>
+      </Row>
+      <SubmitRow>
+        <SubmitButton type="submit">Quote Rates</SubmitButton>
+      </SubmitRow>
+    </StyledForm>
+  ); 
+}
 
-export default Form; 
+const mapStateToProps = (state) => {
+  return {
+    loanSize: state.loanSize, 
+    creditScore: state.creditScore, 
+    propertyType: state.propertyType, 
+    occupancy: state.occupancy
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  null
+)(Form)
