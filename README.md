@@ -8,7 +8,7 @@
 
 ## Notes and things I think could be improved upon
 - I used styled components and made the form responsive, however the table itself is not responsive. I would achieve that by creating a mobile version of the table and swap to it on smaller screen sizes. 
-- The final form UX feels stiff, if I had time to improve it I would apply slight transition animations either by using Suspense from react and applying a custom spinner animation, or by just having the table fade-in and slide-up using simple CSS animations when rendered. 
+- I added a spinner and fade-up animation for when the table of rate quotes is ready with data, but I would go back and refine this UX if I had more time. 
 - I would bolster up my unit tests which of course are extremely important to scale any product. 
 - Obviously in a production setting that `AUTH_KEY` value would most likely be passed in from our build pipeline and not manually added. 
 
