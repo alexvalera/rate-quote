@@ -21,14 +21,15 @@ export const Input = styled.input`
 
 const Container = styled.div``;
 
-const TextInput = (props) => {
+const TextInput = ({label, name, maxLength, onChangeHandler}) => {
   return (
     <Container>
-      <Label text={props.label} for={props.name}/>
+      <Label text={label} for={name}/>
       <Input 
-        onChange={props.onChangeHandler}
+        onChange={onChangeHandler}
         type="text"
-        name={props.name}
+        name={name}
+        maxLength={maxLength || ''}
       />
     </Container>
   )
@@ -37,7 +38,8 @@ const TextInput = (props) => {
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  onChangeHandler: PropTypes.func.isRequired
+  maxLength: PropTypes.number,
+  onChangeHandler: PropTypes.func.isRequired, 
 }
 
 export default TextInput; 
