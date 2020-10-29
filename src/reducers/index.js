@@ -3,8 +3,8 @@ import { SET_LOAN_SIZE, SET_CREDIT_SCORE, SET_RATE_QUOTES, SET_PROPERTY_TYPE, SE
 const initialState = {
   loanSize: null,
   creditScore: null, 
-  propertyType: '', 
-  occupancy: '', 
+  propertyType: 'Condo', 
+  occupancy: 'Primary', 
   rateQuotes: []
 };
 
@@ -23,7 +23,7 @@ function rootReducer(state = initialState, action) {
       return { ...state, occupancy: action.payload }
     }
     case SET_RATE_QUOTES: {
-      return { ...state, rateQuotes: action.payload.rateQuotes }
+      return { ...state, rateQuotes: action.payload }
     }
     default:
       return { ...state }; 
