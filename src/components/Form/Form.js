@@ -3,7 +3,7 @@ import LoanSize from '../Fields/LoanSize/LoanSize';
 import CreditScore from '../Fields/CreditScore/CreditScore';
 import Occupancy from '../Fields/Occupancy/Occupancy';
 import PropertyType from '../Fields/PropertyType/PropertyType';
-import { getRateQuotes } from '../../actions';
+import { getRateQuotes } from '../../middleware/thunks';
 import { connect, useDispatch } from "react-redux";
 
 const StyledForm = styled.form`
