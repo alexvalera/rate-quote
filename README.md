@@ -1,4 +1,4 @@
-## Getting started
+## Getting started 🐱‍💻 
 
 - Clone this repository and then run `npm i`
 - Open up the `.env` file and add an auth key
