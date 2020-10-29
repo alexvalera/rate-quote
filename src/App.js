@@ -1,14 +1,24 @@
 import './App.css';
 import Form from './components/Form/Form';
 import RateQuotesTable from './components/RateQuotesTable/RateQuotesTable';
+import { connect } from 'react-redux';
 
-function App() {
+function App({ hasRateQuotes }) {
   return (
     <main>
       <Form />
-      <RateQuotesTable />
+      { hasRateQuotes && <RateQuotesTable /> }
     </main>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    hasRateQuotes: !!state.rateQuotes.length
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  null
+)(App);
