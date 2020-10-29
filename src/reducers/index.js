@@ -9,7 +9,7 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-  switch(action) {
+  switch(action.type) {
     case SET_LOAN_SIZE: {
       return { ...state, loanSize: action.payload }
     }
