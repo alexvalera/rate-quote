@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { formatNumber } from '../../utilities/utilities';
 const Table = styled.table`
   width: 100%;
   max-width: 880px;
@@ -29,27 +31,45 @@ const Row = styled.tr`
   padding: 5px; 
 `;
 
-const RateQuotesTable = () => (
-  <Table>
-    <tbody>
-      <Row>
-        <Header>Lender</Header>
-        <Header>Product</Header>
-        <Header>Rate</Header>
-        <Header>Closing Costs</Header>
-        <Header>Monthly Payments</Header>
-        <Header>APR</Header>
-      </Row>
-      <Row>
-        <Cell>Thing</Cell>
-        <Cell>Thing</Cell>
-        <Cell>Thing</Cell>
-        <Cell>Thing</Cell>
-        <Cell>Thing</Cell>
-        <Cell>Thing</Cell>
-      </Row>
-    </tbody>
-  </Table>
-);
+const RateQuotesTable = ({ rateQuotes }) => {
+  return (
+    <Table>
+      <tbody>
+        <Row>
+          <Header>Lender</Header>
+          <Header>Product</Header>
+          <Header>Rate</Header>
+          <Header>Closing Costs</Header>
+          <Header>Monthly Payments</Header>
+          <Header>APR</Header>
+        </Row>
+        {
+          rateQuotes.map((rate) => {
+            return (
+              <Row key={rate.lenderName + rate.loanType}>
+                <Cell>{rate.lenderName}</Cell>
+                <Cell>{rate.loanType}</Cell>
+                <Cell>{rate.interestRate.toFixed(3)}%</Cell>
+                <Cell>{formatNumber(rate.closingCosts.toFixed(2))}</Cell>
+                <Cell>{formatNumber(rate.monthlyPayment.toFixed(2))}</Cell>
+                <Cell>{rate.apr.toFixed(3)}%</Cell>
+              </Row>
+            )
+          })
+        }
+      </tbody>
+    </Table>
+  );
+}
 
-export default RateQuotesTable;
+
+const mapStateToProps = state => {
+  return {
+    rateQuotes: state.rateQuotes
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(RateQuotesTable)
