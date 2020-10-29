@@ -9,6 +9,8 @@ export const SET_OCCUPANCY = 'SET_OCCUPANCY';
 
 export const SET_RATE_QUOTES = 'SET_RATE_QUOTES';
 
+export const SET_RATES_LOADING = 'SET_RATES_LOADING'; 
+
 // Content
 export const PROPERTY_TYPE_OPTIONS = {
   Condo: 'Condo', 

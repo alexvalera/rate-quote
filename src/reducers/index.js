@@ -1,11 +1,12 @@
-import { SET_LOAN_SIZE, SET_CREDIT_SCORE, SET_RATE_QUOTES, SET_PROPERTY_TYPE, SET_OCCUPANCY } from "../shared/constants";
+import { SET_LOAN_SIZE, SET_CREDIT_SCORE, SET_RATE_QUOTES, SET_PROPERTY_TYPE, SET_OCCUPANCY, SET_RATES_LOADING } from "../shared/constants";
 
 const initialState = {
   loanSize: null,
   creditScore: null, 
   propertyType: 'Condo', 
   occupancy: 'Primary', 
-  rateQuotes: []
+  rateQuotes: [], 
+  isLoadingRates: false
 };
 
 function rootReducer(state = initialState, action) {
@@ -24,6 +25,9 @@ function rootReducer(state = initialState, action) {
     }
     case SET_RATE_QUOTES: {
       return { ...state, rateQuotes: action.payload }
+    }
+    case SET_RATES_LOADING: {
+      return { ...state,  isLoadingRates: action.payload}
     }
     default:
       return { ...state }; 

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import LoanSize from '../Fields/LoanSize/LoanSize';
 import CreditScore from '../Fields/CreditScore/CreditScore';
 import Occupancy from '../Fields/Occupancy/Occupancy';
@@ -52,7 +52,32 @@ const SubmitButton = styled.button`
     }
 `;
 
-const Form = ({loanSize, creditScore, propertyType, occupancy}) =>  {
+const SpinnerAnimation = keyframes`
+    from { transform: rotate (0deg) }, 
+    to { transform: rotate(360deg) }
+`;
+
+const SpinnerContainer = styled.div`
+  width: 133px;
+  display: flex; 
+  justify-content: center;
+`;
+
+const Spinner = styled.div`
+  animation: ${SpinnerAnimation} 1s infinite;
+  transform: rotate(0deg);
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-left: 2px solid #1abc9a;
+  border-top: 2px solid #1abc9a;
+  border-right: 2px solid #1abc9a;
+  border-bottom: 2px solid #1abc9a;
+  border-radius: 50%;
+`;
+
+const Form = ({loanSize, creditScore, propertyType, occupancy, isLoadingRates}) =>  {
   const dispatch = useDispatch();
 
   function handleSubmit(e) {
@@ -79,7 +104,8 @@ const Form = ({loanSize, creditScore, propertyType, occupancy}) =>  {
         </Column>
       </Row>
       <SubmitRow>
-        <SubmitButton type="submit">Quote Rates</SubmitButton>
+        { isLoadingRates && <SpinnerContainer><Spinner/></SpinnerContainer> }
+        { !isLoadingRates && <SubmitButton type="submit">Quote Rates</SubmitButton> }
       </SubmitRow>
     </StyledForm>
   ); 
@@ -87,6 +113,7 @@ const Form = ({loanSize, creditScore, propertyType, occupancy}) =>  {
 
 const mapStateToProps = (state) => {
   return {
+    isLoadingRates: state.isLoadingRates,
     loanSize: state.loanSize, 
     creditScore: state.creditScore, 
     propertyType: state.propertyType, 
