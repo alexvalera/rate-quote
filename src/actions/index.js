@@ -26,7 +26,7 @@ export function setRateQuotes(payload) {
 export function getRateQuotes(loanSize, creditScore, propertyType, occupancy) {
   return function(dispatch) {
     return RateQuotesService.fetchRates(loanSize, creditScore, propertyType, occupancy)
-      .then(rates => dispatch(setRateQuotes(rates))
+      .then(rates => dispatch(setRateQuotes(rates || []))
     )
   }
 }
