@@ -21,13 +21,13 @@ export const Select = styled.select`
 
 const Container = styled.div``;
 
-const Dropdown = (props) => {
+const Dropdown = ({label, onChangeHandler, options}) => {
   return (
     <Container>
-      <Label text={props.label}/>
-      <Select onChange={props.onChangeHandler}>
+      <Label text={label}/>
+      <Select onChange={onChangeHandler}>
         {
-          Object.entries(props.options).map(([k, v]) => {
+          Object.entries(options).map(([k, v]) => {
             return <option key={k} value={k}>{v}</option>
           })
         }
